@@ -1,4 +1,4 @@
-package processor;
+package rozenberg.processor;
 
 public class Memory {
 
