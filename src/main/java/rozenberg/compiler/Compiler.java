@@ -20,25 +20,14 @@ public class Compiler {
 		while ((line = reader.readLine()) != null) {
 			String[] instr = new String[2];
 			instr = line.split(" ");
-			String hex;
 			switch (instr[0]) {
 			case "LD":
 				builder.append("0");
-				hex = (convertToHex(instr[1]));
-				if (hex.length() == 1) {
-					builder.append("0" + hex);
-				} else {
-					builder.append(hex);
-				}
+				convertToHex(instr[1]);
 				break;
 			case "ST":
 				builder.append("1");
-				hex = (convertToHex(instr[1]));
-				if (hex.length() == 1) {
-					builder.append("0" + hex);
-				} else {
-					builder.append(hex);
-				}
+				convertToHex(instr[1]);
 				break;
 			case "SWP":
 				builder.append("2");
@@ -54,21 +43,11 @@ public class Compiler {
 				break;
 			case "BZ":
 				builder.append("6");
-				hex = (convertToHex(instr[1]));
-				if (hex.length() == 1) {
-					builder.append("0" + hex);
-				} else {
-					builder.append(hex);
-				}
+				convertToHex(instr[1]);
 				break;
 			case "BR":
 				builder.append("7");
-				hex = (convertToHex(instr[1]));
-				if (hex.length() == 1) {
-					builder.append("0" + hex);
-				} else {
-					builder.append(hex);
-				}
+				convertToHex(instr[1]);
 				break;
 			case "STP":
 				builder.append("8");
@@ -81,7 +60,12 @@ public class Compiler {
 		return builder.toString();
 	}
 
-	public String convertToHex(String line) {
-		return Integer.toString(Integer.parseInt(line), 16).toUpperCase();
+	public void convertToHex(String line) {
+		String hex = Integer.toString(Integer.parseInt(line), 16).toUpperCase();
+		if (hex.length() == 1) {
+			builder.append("0" + hex);
+		} else {
+			builder.append(hex);
+		}
 	}
 }
