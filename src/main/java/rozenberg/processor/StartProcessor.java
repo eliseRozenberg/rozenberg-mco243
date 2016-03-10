@@ -10,8 +10,7 @@ public class StartProcessor {
 	public static void main(String[] args) {
 		Processor processor = new Processor();
 		try {
-			// BufferedReader reader = new BufferedReader(new
-			// FileReader("mach.in"));
+			// BufferedReader reader = new BufferedReader(new FileReader("mach.in"));
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			String line;
 			while ((line = reader.readLine()) != null) {
